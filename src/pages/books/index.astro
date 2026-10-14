@@ -1,25 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BookCard from '../../components/BookCard.astro';
+import { getCollection } from "astro:content";
 
-interface Book {
-  title: string;
-  author: string;
-}
-
-const books: Book[] = [
-  { title: "The Name of The Wind", author: "Patrick Rothfuss" },
-  { title: "The Final Empire", author: "Brendon Sanderson" },
-  { title: "The Blade Itself", author: "Joe Abercrombie" },
-  { title: "The Will of the Many", author: "James Islington" },
-];
+const books = await getCollection('books');
 ---
 
 <BaseLayout>
   <div class="content">
     <h2>Books</h2>
-    {
-      books.map((book) => <BookCard book={book} />)}
+    {books.map(book => <BookCard book={book} />)}
     {books.length < 1 && <p>No books to show.</p>}
   </div>
 </BaseLayout>
+
+<style>
+    h2 {
+    padding-right: 10px;
+    border-right: 0.5rem solid #ebe5f2;
+    border-bottom: 0.5rem solid #f9f6fc;
+    margin-bottom: 2.5rem;
+    text-align: right;
+  }
+</style>
