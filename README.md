@@ -1,5 +1,7 @@
 # Astro Starter Kit: Minimal
 
+**Live site:** https://acourtney18.book-bites.workers.dev/
+
 ```sh
 npm create astro@latest -- --template minimal
 ```
